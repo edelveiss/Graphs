@@ -3,6 +3,10 @@
 class Queue():
     def __init__(self):
         self.queue = []
+    def __str__(self):
+        for el in self.queue:
+            return f" {el} "
+
     def enqueue(self, value):
         self.queue.append(value)
     def dequeue(self):
