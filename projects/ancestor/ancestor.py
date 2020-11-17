@@ -7,6 +7,14 @@ class Graph:
     """Represent a graph as a dictionary of vertices mapping labels to edges."""
     def __init__(self):
         self.vertices = {}
+    
+    def __str__(self):
+        output = ""
+        for key, value in self.vertices.items():
+            output += f"{key}:{value}\n"
+        return output
+
+        
 
     def add_vertex(self, vertex_id):
         """
@@ -36,6 +44,8 @@ class Graph:
         return self.vertices[vertex_id] # O(1)
 
 
+
+
 #-------------------earliest_ancestor function----------------------
 def earliest_ancestor(ancestors, starting_node):
     
@@ -48,13 +58,13 @@ def earliest_ancestor(ancestors, starting_node):
          #adding edges
         graph.add_edge(child, parent)
 
+    
 
-    #using dfs for searching the earliest ancestor. Return the longest path of ansestors
+
+    #using dfs for searching the earliest ancestor. Returns the longest path of ancestors
     def find_earliest_ancestor(child):
-        # s = Stack()
         s = deque()
         s.append([child])
-        # s.push([child])
         visited = set()
         res_ancestor = -1
         path_len = 0
@@ -63,7 +73,7 @@ def earliest_ancestor(ancestors, starting_node):
         if len(graph.get_neighbors(child)) == 0:
             return res_ancestor
 
-        # while s.size() > 0:
+       
         while len(s) > 0:
             #pop the first parth
             path = s.pop()
@@ -96,5 +106,5 @@ def earliest_ancestor(ancestors, starting_node):
 
 
 test_ancestors = [(1, 3), (2, 3), (3, 6), (5, 6), (5, 7), (4, 5), (4, 8), (8, 9), (11, 8), (10, 1)]
-print(earliest_ancestor(test_ancestors, 2))
+print(earliest_ancestor(test_ancestors, 6))
     

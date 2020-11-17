@@ -109,7 +109,6 @@ class Graph:
         visited_verts = set()
         while queue.size() > 0:
             path = queue.dequeue()
-            print("path",path)
             curr_vert = path[-1]
             if curr_vert not in visited_verts:
                 if curr_vert == destination_vertex:
@@ -124,9 +123,8 @@ class Graph:
                     new_path = list(path)
                     
                     new_path.append(e)
-                    print("append new_path e:",new_path)
                     queue.enqueue(new_path)
-                    print("queue",queue)
+                    
         return None
 
 
